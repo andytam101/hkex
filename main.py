@@ -89,8 +89,10 @@ class ExtractData:
         
     def classify_stock(self, line: str, next_line: str):
         words  = line.split()
-        code = int(words[0])
+        if words[0] == "*":
+            words = words[1:]
 
+        code = int(words[0])
         try:
             prices = next_line.split()
             # locate currency
