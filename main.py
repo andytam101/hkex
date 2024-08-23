@@ -81,7 +81,10 @@ class ExtractData:
     def is_wanted_stock(self, line: str):
         words = line.split()
         try:
-            x = int(words[0])
+            if words[0] == "*":
+                x = int(words[1])
+            else:
+                x = int(words[0])
             return x in self.stocks
         except (ValueError, IndexError):
             # not a stock code
@@ -166,6 +169,7 @@ class ExtractData:
         
         print("Reading stocks...")
         lines = lines[start_idx:]
+
         for idx, line in enumerate(lines):
             if self.is_wanted_stock(line):
                 try:
