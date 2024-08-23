@@ -180,7 +180,7 @@ class ExtractData:
 
     def quit(self):
         if len(self.stocks) > 0:
-            message = f"These stocks were not read: {", ".join(self.stocks)}"
+            message = f"These stocks were not read: {', '.join(self.stocks)}"
             print(message)
             logging.error(message)
 
